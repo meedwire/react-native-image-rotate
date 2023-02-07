@@ -17,6 +17,12 @@ const ImageRotate = NativeModules.ImageRotate
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return ImageRotate.multiply(a, b);
+interface IRotateImage {
+  content?: string;
+  type: 'file' | 'base64';
+  angle: number;
+}
+
+export function rotate(params?: IRotateImage) {
+  return ImageRotate.rotate(params);
 }

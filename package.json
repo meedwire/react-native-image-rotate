@@ -1,5 +1,5 @@
 {
-  "name": "react-native-image-rotate",
+  "name": "@meedwire/react-native-image-rotate",
   "version": "0.1.0",
   "description": "test",
   "main": "lib/commonjs/index",
@@ -34,20 +34,20 @@
     "release": "release-it",
     "example": "yarn --cwd example",
     "bootstrap": "yarn example && yarn install && yarn example pods",
-    "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build"
+    "clean": "npx del-cli android/build example/android/build example/android/app/build example/ios/build"
   },
   "keywords": [
     "react-native",
     "ios",
     "android"
   ],
-  "repository": "https://github.com/meedwire/react-native-image-rotate/react-native-image-rotate",
-  "author": "leonardo.jeronimo <meedwire@gmail.com> (https://github.com/meedwire/react-native-image-rotate)",
+  "repository": "https://github.com/meedwire/react-native-image-rotate",
+  "author": "leonardo.jeronimo <meedwire@gmail.com> (https://github.com/meedwire)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/meedwire/react-native-image-rotate/react-native-image-rotate/issues"
+    "url": "https://github.com/meedwire/react-native-image-rotate"
   },
-  "homepage": "https://github.com/meedwire/react-native-image-rotate/react-native-image-rotate#readme",
+  "homepage": "https://github.com/meedwire/react-native-image-rotate#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
