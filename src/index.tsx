@@ -23,6 +23,6 @@ interface IRotateImage {
   angle: number;
 }
 
-export function rotate(params?: IRotateImage) {
+export function rotate(params?: IRotateImage): Promise<string> {
   return ImageRotate.rotate(params);
 }
