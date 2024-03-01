@@ -1,6 +1,6 @@
 # react-native-image-rotate
 
-This package provide methods rotate images
+Package intended to rotate images in base64 or path
 
 ## Installation
 
@@ -10,43 +10,12 @@ npm install react-native-image-rotate
 
 ## Usage
 
-```tsx
-import React from 'react';
+```js
+import { multiply } from 'react-native-image-rotate';
 
-import { StyleSheet, View, Image, Button } from 'react-native';
-import { rotate } from 'react-native-image-rotate';
-import image from './image';
+// ...
 
-export default function App() {
-  const [result, setResult] = React.useState<string>();
-
-  const rotateImage = async () => {
-    try {
-      const path = await rotate({ type: 'base64', content: image, angle: 90 });
-
-      setResult(path);
-    } catch (error) {}
-  };
-
-  return (
-    <View style={styles.container}>
-      {result && <Image source={{ uri: result }} style={styles.image} />}
-      <Button title="Rotate" onPress={rotateImage} />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-  },
-  image: {
-    alignSelf: 'center',
-    width: 200,
-    height: 200,
-  },
-});
+const result = await multiply(3, 7);
 ```
 
 ## Contributing
