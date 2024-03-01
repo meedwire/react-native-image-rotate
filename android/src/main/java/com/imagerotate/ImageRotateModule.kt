@@ -6,6 +6,7 @@ import android.graphics.Matrix
 import android.util.Base64
 import com.facebook.react.bridge.*
 import java.io.File
+import java.lang.Exception
 import java.net.URI
 import java.util.UUID
 
@@ -16,32 +17,26 @@ class ImageRotateModule(reactContext: ReactApplicationContext) :
     return NAME
   }
 
+  private var base64Rotate = Base64Rotate(reactApplicationContext);
+  private var fileRotate = FileRotate(reactApplicationContext);
+
   @ReactMethod
   fun rotate(options: ReadableMap, promise: Promise) {
     val type: String = options.getString("type")!!
     val content: String = options.getString("content")!!
-    val degAngle: Int = options.getInt("angle")!!
+    val degAngle: Int = options.getInt("angle")
 
-    val imageBytes = Base64.decode(content, Base64.DEFAULT)
-
-    val cacheDir = reactApplicationContext.cacheDir.toString()
-
-    val path = URI.create(cacheDir + "/" + UUID.randomUUID() + ".jpeg")
-
-    val file = File(path.path)
-
-    val matrix = Matrix()
-
-    matrix.postRotate(degAngle.toFloat())
-
-    val bitmapFactory = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
-    val bitmap = Bitmap.createBitmap(bitmapFactory, 0, 0, bitmapFactory.width, bitmapFactory.height, matrix, true);
-
-    file.outputStream().use {
-      bitmap.compress(Bitmap.CompressFormat.JPEG, 100, it)
+    if (type == "base64"){
+      val pathFile = base64Rotate.rotate(content, degAngle)
+      return promise.resolve(pathFile)
     }
 
-    promise.resolve("file:///"+file.absoluteFile)
+    try {
+      val pathFile = fileRotate.rotate(content, degAngle)
+      return promise.resolve(pathFile)
+    }catch (e: Exception){
+      promise.reject(e.cause)
+    }
   }
 
   companion object {

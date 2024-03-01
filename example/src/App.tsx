@@ -35,7 +35,11 @@ export default function App() {
     try {
       if (!file) return;
 
-      const path = await rotate({ type: 'file', content: file.uri, angle });
+      const path = await rotate({
+        type: 'file',
+        content: file.uri,
+        angle,
+      });
 
       setResult(path);
       setAngle((prev) => (prev >= 360 ? 90 : prev + 90));
@@ -77,17 +81,22 @@ export default function App() {
             resizeMode="contain"
           />
         )}
-        <TouchableOpacity style={styles.button} onPress={base64Rotate}>
-          <Text style={styles.textButton}>Rotate - {angle}deg</Text>
-        </TouchableOpacity>
+        {file && (
+          <>
+            <TouchableOpacity style={styles.button} onPress={base64Rotate}>
+              <Text style={styles.textButton}>Rotate - {angle}deg</Text>
+            </TouchableOpacity>
 
-        {result && (
-          <TouchableOpacity style={styles.buttonFile} onPress={fileRotate}>
-            <Text style={styles.textButton}>File Rotate - {angle}deg</Text>
-          </TouchableOpacity>
+            <TouchableOpacity style={styles.buttonFile} onPress={fileRotate}>
+              <Text style={styles.textButton}>File Rotate - {angle}deg</Text>
+            </TouchableOpacity>
+          </>
         )}
 
-        <TouchableOpacity style={styles.buttonFile} onPress={fileSelect}>
+        <TouchableOpacity
+          style={[styles.buttonFile, { marginTop: file ? 22 : 'auto' }]}
+          onPress={fileSelect}
+        >
           <Text style={styles.textButton}>Select file</Text>
         </TouchableOpacity>
       </View>
