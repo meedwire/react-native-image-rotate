@@ -1,6 +1,6 @@
 {
   "name": "@meedwire/react-native-image-rotate",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Package intended to rotate images in base64 or path",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
