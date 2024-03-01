@@ -5,7 +5,11 @@ This package provide methods rotate images
 ## Installation
 
 ```sh
-npm install react-native-image-rotate
+npm install @meedwire/react-native-image-rotate
+```
+
+```sh
+yarn add @meedwire/react-native-image-rotate
 ```
 
 ## Usage
