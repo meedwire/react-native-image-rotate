@@ -18,7 +18,7 @@ yarn add @meedwire/react-native-image-rotate
 import React from 'react';
 
 import { StyleSheet, View, Image, Button } from 'react-native';
-import { rotate } from 'react-native-image-rotate';
+import { rotate } from ' @meedwire/react-native-image-rotate';
 import image from './image';
 
 export default function App() {
