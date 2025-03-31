@@ -35,7 +35,7 @@ class ImageRotateModule(reactContext: ReactApplicationContext) :
       val pathFile = fileRotate.rotate(content, degAngle)
       return promise.resolve(pathFile)
     }catch (e: Exception){
-      promise.reject(e.cause)
+      e.cause?.let { promise.reject(it) }
     }
   }
 
